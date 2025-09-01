@@ -36,19 +36,6 @@ while count0 != 10:
 print(list_100)
 
 
-def fastest(rnd_list):
-    numb = np.random.randint(1, 10)
-    binary = search_binary(random_list, numb)
-    linear = search_somthing(random_list, numb)
-    if binary > linear:
-        print("Линейный поиск быстрее")
-    else:
-        print("Бинарный поиск быстрее")
-
-
-fastest(random_list)
-
-
 random_list_10 = np.random.randint(0, 100, size=10)
 random_list_10.sort()
 random_list_100 = np.random.randint(0, 100, size=100)
@@ -76,6 +63,19 @@ test_code_binary_100 = """def test_time():
 test_code_binary_1000 = """def test_time():
     search_binary(random_list_1000, rnd_numb)
 """
+
+
+def fastest(rnd_list):
+    numb = np.random.randint(1, 10)
+    binary = timeit.timeit(stmt=test_code_binary_100, number=1000)
+    linear = timeit.timeit(stmt=test_code_linear_100, number=1000)
+    if binary > linear:
+        print("Линейный поиск быстрее")
+    else:
+        print("Бинарный поиск быстрее")
+
+
+fastest(random_list)
 
 
 def append_list(test_code):
