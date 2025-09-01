@@ -65,8 +65,7 @@ test_code_binary_1000 = """def test_time():
 """
 
 
-def fastest(rnd_list):
-    numb = np.random.randint(1, 10)
+def fastest():
     binary = timeit.timeit(stmt=test_code_binary_100, number=1000)
     linear = timeit.timeit(stmt=test_code_linear_100, number=1000)
     if binary > linear:
@@ -75,7 +74,7 @@ def fastest(rnd_list):
         print("Бинарный поиск быстрее")
 
 
-fastest(random_list)
+fastest()
 
 
 def append_list(test_code):
